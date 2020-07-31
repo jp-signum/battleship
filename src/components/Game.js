@@ -18,9 +18,9 @@ class Game extends Component {
         let { grid, fleet, shots, hits } = this.state;
 
         return (
-            <div>
+            <>
                 hello
-            </div>
+            </>
         );
     }
 }
