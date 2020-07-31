@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+
+import Board from './Board/Board'
+
+import { ships } from '../constants/ships'
 
 class Game extends Component {
     constructor(props) {
@@ -12,6 +17,13 @@ class Game extends Component {
             remaining: 5,
             gameOver: false
         }
+    }
+
+    newGame() {
+        let newFleet = _.cloneDeep(ships);
+        this.setState({
+            fleet: newFleet
+        });
     }
 
     render() {
