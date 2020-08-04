@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
+import styled from 'styled-components/macro';
 import _ from 'lodash';
 
+import Stats from './Stats'
 import Board from './Board/Board';
+
+import media from '../theme/DeviceWidth'
 
 import { ships } from '../constants/ships';
 import { makeBoard } from '../helpers/generateBoard';
+
+
+const GameContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    
+    ${media.phone`
+        flex-direction: row;
+    `}
+`
 
 class Game extends Component {
     constructor(props) {
@@ -12,15 +26,11 @@ class Game extends Component {
         this.state = {
             board: null,
             fleet: null,
-            shots: 0,
-            hits: 0,
-            sunk: 0,
-            remaining: 5,
             gameOver: false
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.newGame();
     }
 
@@ -33,11 +43,14 @@ class Game extends Component {
     }
 
     render() {
-        console.log(this.state)
+        let { fleet, board } = this.state
+        // console.log(this.state)
+
         return (
-            <>
-                <Board />
-            </>
+            <GameContainer >
+                <Stats fleet={fleet} />
+                <Board board={board} />
+            </GameContainer>
         );
     }
 }

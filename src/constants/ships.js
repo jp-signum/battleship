@@ -29,7 +29,7 @@ export const ships = [
         hits: 0
     }, {
         id: 5,
-        name: 'Carrier',
+        name: 'carrier',
         size: 2,
         position: {},
         hps: 2,
