@@ -2,7 +2,7 @@ import { ships } from '../constants/ships'
 
 // create a playable board containing randomly placed ships
 const makeBoard = () => {
-    board = makeGrid()
+    let board = makeGrid()
 
     for (let i = 0; i < ships.length; i++) {
         board = generateShipPositions(ships[i], board)
@@ -55,12 +55,12 @@ const generateShipPositions = (ship, board) => {
                 y = initialShipPos[1],
                 directions = getDirections();
 
-            board[x][y] = ship.id;
+            board[x][y] = ship.id * 10;
             board = refillNeighbourCells(board, x, y, ship.id);
 
             for (let i = 0; i < directions.length; i++) {
                 let tempBoard = makeClone(board),
-                    newBoard = tryDirections(directions[i], ship, shipStartPosition, tempBoard);
+                    newBoard = tryDirections(directions[i], ship, initialShipPos, tempBoard);
 
                 if (newBoard !== null) {
                     continueLoop = false;
@@ -165,7 +165,7 @@ const tryDirections = (dir, ship, initialShipPos, board) => {
                     wrongDir = true;
                     break;
                 } else if (positionIsFree(board, [x, y + i]) || board[x][y + i] === ship.id) {
-                    board[x][y + i] = ship.id;
+                    board[x][y + i] = ship.id * 10;
                     refillNeighbourCells(board, x, y + i, ship.id);
                     wrongDir = false;
                     break;
@@ -178,7 +178,7 @@ const tryDirections = (dir, ship, initialShipPos, board) => {
                     wrongDir = true;
                     break;
                 } else if (positionIsFree(board, [x + i, y]) || board[x + i][y] === ship.id) {
-                    board[x + i][y] = ship.id;
+                    board[x + i][y] = ship.id * 10;
                     refillNeighbourCells(board, x + i, y, ship.id);
                     wrongDir = false;
                     break;
@@ -191,7 +191,7 @@ const tryDirections = (dir, ship, initialShipPos, board) => {
                     wrongDir = true;
                     break;
                 } else if (positionIsFree(board, [x, y - i]) || board[x][y - i] === ship.id) {
-                    board[x][y - i] = ship.id;
+                    board[x][y - i] = ship.id * 10;
                     refillNeighbourCells(board, x, y - i, ship.id);
                     wrongDir = false;
                     break;
@@ -204,7 +204,7 @@ const tryDirections = (dir, ship, initialShipPos, board) => {
                     wrongDir = true;
                     break;
                 } else if (positionIsFree(board, [x - i, y]) || board[x - i][y] === ship.id) {
-                    board[x - i][y] = ship.id;
+                    board[x - i][y] = ship.id * 10;
                     refillNeighbourCells(board, x - i, y, ship.id);
                     wrongDir = false;
                     break;
@@ -223,13 +223,13 @@ const tryDirections = (dir, ship, initialShipPos, board) => {
     } else {
         return board;
     }
-}
+};
 
-module.exports = {
-    makeBoard: makeBoard,
-    makeGrid: makeGrid,
-    getRandomCoordinate: getRandomCoordinate,
-    getDirections: getDirections,
-    getRandomNumber: getRandomNumber,
-    makeClone: makeClone
-}
+export {
+    makeBoard,
+    makeGrid,
+    getRandomCoordinate,
+    getDirections,
+    getRandomNumber,
+    makeClone
+};

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import Board from './Board/Board'
+import Board from './Board/Board';
 
-import { ships } from '../constants/ships'
+import { ships } from '../constants/ships';
+import { makeBoard } from '../helpers/generateBoard';
 
 class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            grid: null,
+            board: null,
             fleet: null,
             shots: 0,
             hits: 0,
@@ -19,19 +20,23 @@ class Game extends Component {
         }
     }
 
+    componentDidMount() {
+        this.newGame();
+    }
+
     newGame() {
         let newFleet = _.cloneDeep(ships);
         this.setState({
+            board: makeBoard(),
             fleet: newFleet
         });
     }
 
     render() {
-        let { grid, fleet, shots, hits } = this.state;
-
+        console.log(this.state)
         return (
             <>
-                hello
+                <Board />
             </>
         );
     }

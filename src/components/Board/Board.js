@@ -4,7 +4,7 @@ import StartBtn from './StartBtn';
 import styled from 'styled-components/macro';
 
 const GridContainer = styled.div`
-    
+
 `
 
 function Board(){
@@ -14,3 +14,5 @@ function Board(){
         </div>
     )
 }
+
+export default Board;
