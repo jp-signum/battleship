@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 
-//refactor to fx component
 
 const CellUnitDisplay = styled.div`
     height: 40px;
     width: 40px;
     border: ${props => props.hit ? '2px solid red !important' : '1px dashed blue !important'} ;
+    pointer-events: none;
 `
 
 const CellUnit = styled.div`
@@ -27,7 +27,7 @@ function Cell({ onCellClick, cellState, x, y }) {
         }
     }
 
-    let cell; 
+    let cell;
 
     if (cellState === 'hit') {
         cell = <CellUnitDisplay hit onClick={() => displayFire(x, y, cellState)}></CellUnitDisplay>

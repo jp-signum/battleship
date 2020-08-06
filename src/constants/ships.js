@@ -1,38 +1,33 @@
 export const ships = [
     {
         id: 1,
-        name: 'aircraft',
+        name: 'Aircraft',
         size: 5,
-        position: {},
-        hps: 5,
+        health: 5,
         hits: 0
     }, {
         id: 2,
-        name: 'battleship',
+        name: 'Battleship',
         size: 4,
-        position: {},
-        hps: 4,
+        health: 4,
         hits: 0
     }, {
         id: 3,
-        name: 'submarine',
+        name: 'Submarine',
         size: 3,
-        position: {},
-        hps: 3,
+        health: 3,
         hits: 0
     }, {
         id: 4,
-        name: 'cruiser',
+        name: 'Cruiser',
         size: 3,
-        position: {},
-        hps: 3,
+        health: 3,
         hits: 0
     }, {
         id: 5,
-        name: 'carrier',
+        name: 'Carrier',
         size: 2,
-        position: {},
-        hps: 2,
+        health: 2,
         hits: 0
     }
 ]
