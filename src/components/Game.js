@@ -10,7 +10,6 @@ import media from '../theme/DeviceWidth';
 import { ships } from '../constants/ships';
 import { makeBoard, makeClone } from '../helpers/generateBoard';
 
-
 const GameContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -23,8 +22,33 @@ const GameContainer = styled.div`
     `}
 `
 
-const ResetButton = styled.div`
+const ResetOverlay = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;   
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(23, 144, 205, 0.3);
+    position: fixed;
+`
 
+const EndGame = styled.div`
+    font-size: 2em;
+    padding-bottom: 20px;
+    margin-top: -20px;
+`
+
+const ResetButton = styled.div`
+    padding: 10px;
+    font-size: 1.4em;
+    border: 2px solid lightgrey;
+
+    :hover {
+        cursor: pointer;
+        border: 2px solid black;
+    }
 `
 
 class Game extends Component {
@@ -34,7 +58,7 @@ class Game extends Component {
             board: [],
             fleet: [],
             hits: 0,
-            gameOver: false
+            gameOver: true
         }
     }
 
@@ -88,7 +112,7 @@ class Game extends Component {
 
             newBoard[x][y] = 'hit';
 
-            if (this.state.hits === 17) {
+            if (this.state.hits === 16) {
                 this.setState({
                     gameOver: true
                 })
@@ -110,14 +134,14 @@ class Game extends Component {
 
     render() {
         let { fleet, board } = this.state;
-        console.log(this.state)
+
         return (
             <>
                 {this.state.gameOver
-                    ? <div>
-                        <h1>Game Over</h1>
-                        <ResetButton>Play Again?</ResetButton>
-                    </div>
+                    ? <ResetOverlay>
+                        <EndGame>Game Over</EndGame>
+                        <ResetButton onClick={() => this.resetGame()}>Play Again?</ResetButton>
+                    </ResetOverlay>
                     : <GameContainer>
                         <Stats fleet={fleet} />
                         <Board board={board} onCellClick={(x, y) => this.onCellClick(x, y)} />

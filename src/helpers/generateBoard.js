@@ -11,10 +11,9 @@ const makeBoard = () => {
     return board;
 };
 
-
 // create a 10 x 10 matrix of null value
 const makeGrid = () => {
-    let grid = [10];
+    let grid = [10]
 
     for (let i = 0; i < 10; i++) {
         grid[i] = [10];
@@ -26,10 +25,9 @@ const makeGrid = () => {
     return grid;
 };
 
-
 // makes clone of current board to check positions against
 const makeClone = (grid) => {
-    let clone = [10];
+    let clone = [10]
 
     for (let i = 0; i < 10; i++) {
         clone[i] = [10];
@@ -40,7 +38,6 @@ const makeClone = (grid) => {
 
     return clone;
 };
-
 
 // generates random ship positions
 const generateShipPositions = (ship, board) => {
@@ -76,14 +73,12 @@ const generateShipPositions = (ship, board) => {
     return board;
 };
 
-
 // returns random coordinate
 const getRandomCoordinate = () => {
     const MAX = 9;
 
     return [Math.floor(Math.random() * MAX), Math.floor(Math.random() * MAX)]
 };
-
 
 // checks pos, returning true if pos is free
 const positionIsFree = (grid, pos) => {
@@ -92,7 +87,6 @@ const positionIsFree = (grid, pos) => {
 
     return !(grid[x][y] > 0);
 };
-
 
 // returns random sequence of ship placing directions
 const getDirections = () => {
@@ -109,12 +103,10 @@ const getDirections = () => {
     return directions;
 };
 
-
 // returns random number in range from 0 to max param
 const getRandomNumber = (max) => {
     return Math.floor(Math.random() * max)
 };
-
 
 // marks neighbouring cells of initial pos
 const refillNeighbourCells = (grid, x, y, shipId) => {
@@ -153,6 +145,7 @@ const refillNeighbourCells = (grid, x, y, shipId) => {
     return grid;
 };
 
+// try placing ships in diff directions to ensure no overlap or bounds issues
 const tryDirections = (dir, ship, initialShipPos, board) => {
     let x = initialShipPos[0],
         y = initialShipPos[1],
@@ -163,56 +156,67 @@ const tryDirections = (dir, ship, initialShipPos, board) => {
             case 0:
                 if (y + i > 9) {
                     wrongDir = true;
+
                     break;
                 } else if (positionIsFree(board, [x, y + i]) || board[x][y + i] === ship.id) {
                     board[x][y + i] = ship.id * 10;
                     refillNeighbourCells(board, x, y + i, ship.id);
                     wrongDir = false;
+
                     break;
                 } else {
                     wrongDir = true;
+
                     break;
                 }
             case 1:
                 if (x + i > 9) {
                     wrongDir = true;
+
                     break;
                 } else if (positionIsFree(board, [x + i, y]) || board[x + i][y] === ship.id) {
                     board[x + i][y] = ship.id * 10;
                     refillNeighbourCells(board, x + i, y, ship.id);
                     wrongDir = false;
+
                     break;
                 } else {
                     wrongDir = true;
+
                     break;
                 }
             case 2:
                 if (y - i < 0) {
                     wrongDir = true;
+
                     break;
                 } else if (positionIsFree(board, [x, y - i]) || board[x][y - i] === ship.id) {
                     board[x][y - i] = ship.id * 10;
                     refillNeighbourCells(board, x, y - i, ship.id);
                     wrongDir = false;
+
                     break;
                 } else {
                     wrongDir = true;
+
                     break;
                 }
             case 3:
                 if (x - i < 0) {
                     wrongDir = true;
+
                     break;
                 } else if (positionIsFree(board, [x - i, y]) || board[x - i][y] === ship.id) {
                     board[x - i][y] = ship.id * 10;
                     refillNeighbourCells(board, x - i, y, ship.id);
                     wrongDir = false;
+
                     break;
                 } else {
                     wrongDir = true;
+
                     break;
                 }
-
             default:
                 break;
         }

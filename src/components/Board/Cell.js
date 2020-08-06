@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 
-
 const CellUnitDisplay = styled.div`
     height: 40px;
     width: 40px;

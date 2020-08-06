@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import Health from './Health';
-import Key from './Key';
 
 const StatContainer = styled.div`
     display: flex;
@@ -37,7 +36,6 @@ function Stats({ fleet }) {
                     )
                 })
             }
-            <Key />
         </StatContainer>
     )
 }

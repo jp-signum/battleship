@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components/macro'
+import { createGlobalStyle } from 'styled-components/macro';
 
-import AldiOTF from '../assets/fonts/Aldi-Regular.otf'
+import AldiOTF from '../assets/fonts/Aldi-Regular.otf';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
