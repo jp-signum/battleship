@@ -1,15 +1,16 @@
 import React from 'react';
-// import styled from 'styled-components/macro';
+import styled from 'styled-components/macro';
 
-// const GridContainer = styled.div`
-
-// `
+const FleetHeader = styled.div`
+    color: rgba(23, 144, 205, 1);
+    font-size: 1.6em;
+    font-weight: 500;
+`
 
 function Stats(props) {
-    // console.log(props.fleet)
     return (
         <>
-            <div>Fleet</div>
+            <FleetHeader>Fleet</FleetHeader>
             <div>
                 <div>Aircraft</div>
                 <div>Battleship</div>

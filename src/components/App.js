@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Game from './Game';
+import Game from './game/Game';
 import GlobalStyle from '../theme/GlobalStyle'
 
 function App() {
