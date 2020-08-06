@@ -58,7 +58,7 @@ class Game extends Component {
             board: [],
             fleet: [],
             hits: 0,
-            gameOver: true
+            gameOver: false
         }
     }
 
