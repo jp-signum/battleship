@@ -2,7 +2,7 @@
 
 ## How To Start
 
-From the battleship-syn directory:
+From the battleship directory:
 
     1) Install all dependecies: npm install
     2) Start application: npm start
@@ -10,7 +10,7 @@ From the battleship-syn directory:
 
 ## How To Run tests
 
-From the battleship-syn directory:
+From the battleship directory:
 
     1) Run tests: npm test
 
